@@ -1,5 +1,4 @@
-module.exports = class I18n {
-
+class I18n {
 
   constructor(fallbackTranslation) {
     this.translations = {};
@@ -12,10 +11,10 @@ module.exports = class I18n {
   }
 
   assignTranslation(locale) {
-    try {
-      this.activeTranslation = this.translations[locale];
-    } catch (e) {
-      this.activeTranslation = this.fallbackTranslation;
+    this.activeTranslation = this.translations[locale];
+
+    if (!this.activeTranslation) {
+        this.activeTranslation = this.fallbackTranslation;
     }
     return this;
   }
@@ -51,4 +50,6 @@ module.exports = class I18n {
     }
     return current;
   }
-};
+}
+
+module.exports = I18n;

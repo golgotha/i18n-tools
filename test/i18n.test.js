@@ -2,7 +2,7 @@ const I18n = require('../index');
 
 describe('assign active locale', () => {
 
-    it('Aasign translation and when change it', () => {
+    it('Assign translation and when change it', () => {
         const fallback = {
             hello: 'Hello'
         };
@@ -24,6 +24,17 @@ describe('assign active locale', () => {
 
         i18n.assignTranslation('es');
         expect(i18n.t('hello')).toBe('Hola');
+    });
+
+    it('Fallback translation', () => {
+        const fallback = {
+            hello: 'Hello'
+        };
+
+        const i18n = new I18n(fallback)
+            .assignTranslation('en');
+
+        expect(i18n.t('hello')).toBe('Hello');
     });
 
 });
