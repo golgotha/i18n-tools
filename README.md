@@ -1,4 +1,4 @@
 # i18n-tools
 
 
-Tool which allows add localization in JavaScript application.
+A tool which allows add localization in JavaScript application.
