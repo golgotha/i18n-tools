@@ -8,19 +8,23 @@ describe('assign active locale', () => {
         };
 
         const en = {
-            hello: 'Hello'
+            hello: 'Hello',
+            deep: {
+                word: 'Word'
+            }
         };
 
         const es = {
             hello: 'Hola'
         };
 
-        const i18n = new I18n(fallback);
+        const i18n = new I18n('en');
         i18n.addLocale('en', en)
             .addLocale('es', es)
             .assignTranslation('en');
 
         expect(i18n.t('hello')).toBe('Hello');
+        expect(i18n.t('deep.word')).toBe('Word');
 
         i18n.assignTranslation('es');
         expect(i18n.t('hello')).toBe('Hola');
@@ -31,7 +35,8 @@ describe('assign active locale', () => {
             hello: 'Hello'
         };
 
-        const i18n = new I18n(fallback)
+        const i18n = new I18n('en')
+            .addLocale('en', fallback)
             .assignTranslation('en');
 
         expect(i18n.t('hello')).toBe('Hello');
