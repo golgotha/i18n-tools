@@ -17,3 +17,9 @@ jobs:
       - run:
           name: test
           command: npm test
+      - run:
+          name: build
+          command: npm build
+      - run:
+          name: pubslich
+          command: npm publish

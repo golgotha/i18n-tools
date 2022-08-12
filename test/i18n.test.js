@@ -1,4 +1,4 @@
-const I18n = require('../index');
+const I18n = require('../src');
 
 describe('assign active locale', () => {
 
