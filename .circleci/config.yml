@@ -18,12 +18,12 @@ jobs:
       - run:
           name: test
           command: npm test
-      - run:
-          name: build
-          command: npm run build
-      - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
-      - run:
-          name: publish
-          command: npm publish --access public
+#      - run:
+#          name: build
+#          command: npm run build
+#      - run:
+#          name: Authenticate with registry
+#          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
+#      - run:
+#          name: publish
+#          command: npm publish --access public
