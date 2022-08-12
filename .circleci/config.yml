@@ -21,5 +21,8 @@ jobs:
           name: build
           command: npm run build
       - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
+      - run:
           name: pubslich
           command: npm publish
