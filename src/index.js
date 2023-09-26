@@ -38,10 +38,10 @@ class I18n {
    * @returns {I18n}
    */
   changeLanguage(locale) {
-    this.activeTranslation = this.translations[locale];
+    this.currentTranslation = this.translations[locale];
 
-    if (!this.activeTranslation) {
-        this.activeTranslation = this.translations[this.fallbackLocale];
+    if (!this.currentTranslation) {
+        this.currentTranslation = this.translations[this.fallbackLocale];
     }
     return this;
   }
@@ -50,7 +50,7 @@ class I18n {
    * Check whether key exists.
    *
    * @param key A translation key.
-   * @return True if a key exists.
+   * @return boolean if a key exists.
    */
   exists(key) {
     if (key === undefined || key === null) {
@@ -87,17 +87,13 @@ class I18n {
     }
 
     const keys = this._getKeys(options);
-
-    if (keys) {
-      keys.forEach((key) => {
-        console.debug(`Template ${template}, Parameter value '${key.value}'`);
-        template = template.replace(`\{\{${key.name}\}\}`, key.value);
-      });
-    }
+    keys.forEach((key) => {
+      console.debug(`Template ${template}, Parameter value '${key.value}'`);
+      template = template.replace(`\{\{${key.name}\}\}`, key.value);
+    });
 
     return template;
   }
-
 
   /**
    * Return list keys with values.
@@ -139,7 +135,7 @@ class I18n {
   }
 
   resolveTemplate(paths) {
-    let current = this.activeTranslation;
+    let current = this.currentTranslation;
     let currentFallback = this.translations[this.fallbackLocale];
 
     for (const element of paths) {

@@ -42,7 +42,8 @@ describe('Library test', () => {
     it('Interpolation ', () => {
         const translations = {
             hello: 'Hello {{name}}',
-            fooBazz: 'Foo {{foo.bar}}'
+            fooBar: 'Foo {{foo.bar}}',
+            fooBazz: 'Foo {{foo.bazz.name}}'
         };
 
         const i18n = new I18n('en')
@@ -59,8 +60,8 @@ describe('Library test', () => {
             }
         };
         expect(i18n.t('hello', parameters)).toBe('Hello John');
-        expect(i18n.t('fooBazz', parameters)).toBe('Foo bazz');
-
+        expect(i18n.t('fooBar', parameters)).toBe('Foo bazz');
+        expect(i18n.t('fooBazz', parameters)).toBe('Foo Max');
     });
 
     it('Fallback translation', () => {
